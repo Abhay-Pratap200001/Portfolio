@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { animate, motion, useInView, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight, MapPin, Send } from 'lucide-react'
-import { profile } from '../data/portfolio'
+import { ArrowRight, Download, MapPin, Send } from 'lucide-react'
+import { profile, resume } from '../data/portfolio'
+import { useResumeStatus } from './ui/useResume'
 import { GitHubIcon, LinkedInIcon } from './ui/BrandIcons'
 import portrait from '../assets/abhay-pratap.webp'
 
@@ -166,6 +167,7 @@ function PortraitCard() {
 
 export default function Hero() {
   const reduce = useReducedMotion()
+  const resumeReady = useResumeStatus() === 'ready'
   return (
     <section id="home" aria-label="Introduction" className="relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28 sm:pt-32">
       {/* Background */}
@@ -222,6 +224,12 @@ export default function Hero() {
               <Send className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
               Contact Me
             </a>
+            {resumeReady && (
+              <a href={resume.file} download={resume.downloadName} className="btn btn-ghost group">
+                <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
+                Download Resume
+              </a>
+            )}
             <div className="ml-1 flex items-center gap-2">
               <a href={profile.github} target="_blank" rel="noopener noreferrer" className="icon-btn" aria-label="GitHub profile (opens in new tab)">
                 <GitHubIcon />

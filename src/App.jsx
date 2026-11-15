@@ -10,6 +10,7 @@ import Projects from './components/Projects'
 import Skills from './components/Skills'
 import CloudDevOps from './components/CloudDevOps'
 import Education from './components/Education'
+import Resume from './components/Resume'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -82,6 +83,7 @@ export default function App() {
         <Skills />
         <CloudDevOps />
         <Education />
+        <Resume />
         <Contact />
       </main>
       <Footer />

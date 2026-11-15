@@ -13,6 +13,13 @@ export const profile = {
     'I build modern, scalable and user-friendly web applications — from responsive React and Next.js interfaces to Node.js APIs deployed on the cloud.',
 }
 
+// Resume: put the PDF at public/Abhay_Pratap_Resume.pdf. To update it later,
+// replace that file (keep the same name) and redeploy.
+export const resume = {
+  file: '/Abhay_Pratap_Resume.pdf',
+  downloadName: 'Abhay_Pratap_MERN_Developer_Resume.pdf',
+}
+
 export const navLinks = [
   { id: 'about', label: 'About' },
   { id: 'experience', label: 'Experience' },
@@ -20,6 +27,7 @@ export const navLinks = [
   { id: 'skills', label: 'Skills' },
   { id: 'cloud', label: 'Cloud' },
   { id: 'education', label: 'Education' },
+  { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
 ]
 
