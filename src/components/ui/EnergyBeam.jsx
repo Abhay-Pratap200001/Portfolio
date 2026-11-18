@@ -168,11 +168,15 @@ export default function BeamTrack({ children }) {
   const arcs = useMemo(() => [zigzag(m.len, 3, 15), zigzag(m.len, 11, 20), zigzag(m.len, 23, 11)], [m.len])
 
   return (
-    <div ref={ref} className="relative">
+    // overflow-x: clip trims the beam glow at the screen edge (no sideways scroll)
+    // without affecting vertical overflow or sticky elements inside.
+    <div ref={ref} className="relative [overflow-x:clip]">
       {!reduce && (
         <motion.div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 -z-[5] [--pad:1rem] sm:[--pad:1.5rem] lg:[--pad:2rem] xl:[--pad:3rem]"
+          // Hidden on phones: there is no side margin for it there, and it would
+          // stick out past the screen edge (causing sideways scrolling).
+          className="pointer-events-none absolute inset-y-0 -z-[5] hidden md:block [--pad:1rem] sm:[--pad:1.5rem] lg:[--pad:2rem] xl:[--pad:3rem]"
           // Right margin: centred in the empty space to the right of the content,
           // slightly dimmed and softly blurred so it stays behind everything.
           style={{ left: 'calc(100% - (max(0px, (100% - 1400px) / 2) + var(--pad)) / 2)', filter: 'blur(0.8px) brightness(0.85)' }}

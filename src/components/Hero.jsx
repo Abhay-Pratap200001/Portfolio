@@ -152,7 +152,7 @@ function PortraitCard() {
       initial={{ opacity: 0, scale: 0.92, y: 30 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      className="relative mx-auto w-full max-w-[200px] sm:max-w-[272px] lg:max-w-[304px] xl:max-w-[344px] [perspective:1200px]"
+      className="relative mx-auto w-full max-w-[160px] sm:max-w-[272px] lg:max-w-[304px] xl:max-w-[344px] [perspective:1200px]"
       onPointerMove={onMove}
       onPointerLeave={onLeave}
     >
@@ -217,7 +217,7 @@ export default function Hero() {
   const reduce = useReducedMotion()
   const resumeReady = useResumeStatus() === 'ready'
   return (
-    <section id="home" aria-label="Introduction" className="relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-28 sm:pt-32">
+    <section id="home" aria-label="Introduction" className="relative flex min-h-[100svh] items-center overflow-hidden pb-14 pt-24 sm:pb-16 sm:pt-32">
       {/* Background */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="bg-grid absolute inset-0" />
@@ -228,7 +228,7 @@ export default function Hero() {
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-ink" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:px-8 xl:gap-20 xl:px-12">
+      <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 items-center gap-10 px-4 sm:gap-14 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10 lg:px-8 xl:gap-20 xl:px-12">
         <motion.div variants={container} initial="hidden" animate="show" className="order-2 lg:order-1">
           <motion.p variants={item} className="mb-6 inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface px-3.5 py-1.5 text-xs text-muted">
             <MapPin className="h-3.5 w-3.5 text-accent-soft" aria-hidden="true" />
@@ -260,7 +260,7 @@ export default function Hero() {
             <AnimatedWord text="Pratap" start={13} colors={NAME_COLORS.slice(5)} />
           </h1>
 
-          <motion.p variants={item} className="mt-5 min-h-[2em] font-display text-xl font-medium text-fg/90 sm:text-2xl">
+          <motion.p variants={item} className="mt-5 min-h-[2.8em] font-display text-xl sm:min-h-[2em] font-medium text-fg/90 sm:text-2xl">
             <TypingRoles />
           </motion.p>
 
@@ -309,7 +309,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <motion.dl variants={item} className="mt-12 grid max-w-md grid-cols-3 gap-4 border-t border-line pt-6">
+          <motion.dl variants={item} className="mt-10 grid max-w-md grid-cols-2 gap-x-4 gap-y-5 border-t border-line pt-6 sm:mt-12 sm:max-w-2xl sm:grid-cols-4">
             {[
               [2, '', 'Internships'],
               [100, '+', 'UI components shipped'],

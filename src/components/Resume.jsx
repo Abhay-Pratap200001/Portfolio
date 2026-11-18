@@ -124,7 +124,7 @@ export default function Resume() {
               <span className="truncate">{resume.downloadName}</span>
             </span>
             {status === 'ready' && (
-              <a href={resume.file} download={resume.downloadName} className="btn btn-ghost shrink-0 !rounded-lg !px-3 !py-1.5 text-xs">
+              <a href={resume.file} download={resume.downloadName} className="btn btn-ghost shrink-0 !rounded-lg !px-3 !py-2 text-xs">
                 <Download className="h-3.5 w-3.5" aria-hidden="true" />
                 Download Resume
               </a>

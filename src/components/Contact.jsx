@@ -94,7 +94,7 @@ export default function Contact() {
           variants={stagger(0.1)}
         >
           {channels.map(({ icon: Icon, label, value, href, external, copy: copyText }) => (
-            <motion.div key={label} variants={fadeUp} whileHover={{ x: 4 }} className="card card-hover group flex items-center gap-4 p-4 sm:p-5">
+            <motion.div key={label} variants={fadeUp} whileHover={{ x: 4 }} className="card card-hover group relative flex items-center gap-4 p-4 sm:p-5">
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-line-strong bg-surface-2 text-accent-light transition-transform duration-300 group-hover:scale-110">
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </span>
@@ -103,14 +103,14 @@ export default function Contact() {
                 <a
                   href={href}
                   {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="block truncate text-[15px] text-fg transition-colors hover:text-accent-light"
+                  className="block truncate text-[15px] text-fg transition-colors after:absolute after:inset-0 after:rounded-[1.25rem] after:content-[''] hover:text-accent-light"
                 >
                   {value}
                   {external && <span className="sr-only"> (opens in new tab)</span>}
                 </a>
               </div>
               {copyText ? (
-                <button type="button" onClick={() => copy(copyText)} className="icon-btn !h-9 !w-9" aria-label={`Copy ${label.toLowerCase()}`}>
+                <button type="button" onClick={() => copy(copyText)} className="icon-btn relative z-10 !h-10 !w-10" aria-label={`Copy ${label.toLowerCase()}`}>
                   {copied === copyText ? <CheckCircle2 className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
                 </button>
               ) : (

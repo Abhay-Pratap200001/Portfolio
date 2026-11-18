@@ -62,7 +62,7 @@ function FlowDiagram({ type }) {
                 <span className="grid h-9 w-9 place-items-center rounded-lg border border-line-strong bg-surface-2 text-accent-light">
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <span className="max-w-[4.5rem] font-mono text-[9.5px] leading-tight text-muted">{n.label}</span>
+                <span className="max-w-[4.5rem] font-mono text-[10.5px] leading-tight text-muted sm:text-[9.5px]">{n.label}</span>
               </motion.div>
               {i < nodes.length - 1 && (
                 <motion.div variants={link} className="relative mb-5 h-px flex-1 origin-left overflow-hidden bg-line-strong" aria-hidden="true">

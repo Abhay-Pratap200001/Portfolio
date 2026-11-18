@@ -31,10 +31,10 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Footer">
-            <ul className="grid grid-cols-2 gap-x-10 gap-y-2.5 text-sm sm:grid-cols-4 md:grid-cols-2">
+            <ul className="grid grid-cols-2 gap-x-10 gap-y-1 text-sm sm:grid-cols-4 md:grid-cols-2">
               {navLinks.map((l) => (
                 <li key={l.id}>
-                  <a href={`#${l.id}`} className="text-muted transition-colors hover:text-fg">
+                  <a href={`#${l.id}`} className="inline-block py-1.5 text-muted transition-colors hover:text-fg">
                     {l.label}
                   </a>
                 </li>
@@ -45,7 +45,7 @@ export default function Footer() {
 
         <div className="mt-12 flex flex-col-reverse items-start justify-between gap-4 border-t border-line pt-6 text-xs text-faint sm:flex-row sm:items-center">
           <p>© {YEAR} Abhay Pratap. All rights reserved.</p>
-          <a href="#home" className="group inline-flex items-center gap-1.5 transition-colors hover:text-fg">
+          <a href="#home" className="group inline-flex items-center gap-1.5 py-2 transition-colors hover:text-fg">
             Back to top <ArrowUp className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5" aria-hidden="true" />
           </a>
         </div>

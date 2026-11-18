@@ -28,7 +28,7 @@ export default function Experience() {
         {experience.map((job) => (
           <motion.li
             key={job.company}
-            className="relative pl-14"
+            className="relative pl-12 sm:pl-14"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-80px' }}
@@ -44,7 +44,7 @@ export default function Experience() {
               <Briefcase className="h-4.5 w-4.5" aria-hidden="true" />
             </motion.span>
 
-            <article className="card card-hover p-6 sm:p-8">
+            <article className="card card-hover p-5 sm:p-8">
               <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h3 className="font-display text-xl font-semibold sm:text-2xl">{job.company}</h3>
