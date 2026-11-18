@@ -35,20 +35,11 @@ export default function Contact() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         {/* Email call-to-action */}
         <Reveal className="card relative overflow-hidden p-6 sm:p-10">
-          <motion.div
-            aria-hidden="true"
-            className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-accent/20 blur-3xl"
-            animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          />
+          <div aria-hidden="true" className="absolute -right-20 -top-20 h-72 w-72 animate-glow-pulse rounded-full bg-accent/20 blur-3xl" />
           <div className="relative">
-            <motion.span
-              className="grid h-14 w-14 place-items-center rounded-2xl border border-accent/40 bg-accent/10 text-accent-light"
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            >
+            <span className="grid h-14 w-14 animate-bob-sm place-items-center rounded-2xl border border-accent/40 bg-accent/10 text-accent-light">
               <Mail className="h-6 w-6" aria-hidden="true" />
-            </motion.span>
+            </span>
             <p className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-faint">Email me at</p>
             <a
               href={`mailto:${profile.email}`}

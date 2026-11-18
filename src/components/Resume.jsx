@@ -1,10 +1,23 @@
 import { motion } from 'framer-motion'
-import { Download, Eye, FileText, Loader2 } from 'lucide-react'
+import { Briefcase, Code2, Download, Eye, FileText, FolderGit2, GraduationCap, Loader2, UserRound } from 'lucide-react'
 import { resume } from '../data/portfolio'
 import { Reveal, Section } from './ui/Section'
 import { useResumeStatus } from './ui/useResume'
 
-const highlights = ['2 software developer internships', 'MERN & Next.js projects with live demos', 'AWS, Docker & Nginx deployments', 'One page · PDF']
+const stats = [
+  { value: '2', label: 'Internships' },
+  { value: '2', label: 'Live MERN projects' },
+  { value: 'MERN', label: '+ Next.js & TypeScript' },
+  { value: 'AWS', label: 'EC2 · S3 · Amplify · Docker' },
+]
+
+const inside = [
+  { icon: UserRound, title: 'Summary', text: 'Who I am and what I build' },
+  { icon: Briefcase, title: 'Experience', text: 'Datapel Systems · SparrowBytes FinTech' },
+  { icon: Code2, title: 'Technical skills', text: 'Frontend, backend, databases, cloud & DevOps' },
+  { icon: FolderGit2, title: 'Projects', text: 'Nestora real estate · E-commerce store' },
+  { icon: GraduationCap, title: 'Education & certifications', text: 'BCA · Simplilearn certifications' },
+]
 
 /** "View" opens the PDF in a new tab; "Download" saves it with a clean file name. */
 export function ResumeButtons({ className = '', size = 'md' }) {
@@ -41,23 +54,54 @@ export default function Resume() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[0.75fr_1.25fr]">
         {/* Summary + actions */}
         <Reveal className="card flex flex-col p-6 sm:p-8">
-          <motion.span
-            className="grid h-14 w-14 place-items-center rounded-2xl border border-accent/40 bg-accent/10 text-accent-light"
-            animate={{ rotate: [0, -6, 6, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          >
+          <span className="grid h-14 w-14 animate-wobble place-items-center rounded-2xl border border-accent/40 bg-accent/10 text-accent-light">
             <FileText className="h-6 w-6" aria-hidden="true" />
-          </motion.span>
+          </span>
           <h3 className="mt-6 font-display text-2xl font-semibold">Abhay Pratap — MERN Stack Developer</h3>
-          <ul className="mt-5 space-y-3">
-            {highlights.map((h) => (
-              <li key={h} className="flex items-start gap-3 text-[15px] text-muted">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-soft" aria-hidden="true" />
-                {h}
-              </li>
+          <p className="mt-2 text-sm text-faint">One-page PDF · View online or download</p>
+
+          {/* Quick stats */}
+          <dl className="mt-6 grid grid-cols-2 gap-3">
+            {stats.map((s) => (
+              <motion.div
+                key={s.label}
+                whileHover={{ y: -3 }}
+                className="rounded-xl border border-line bg-surface-2/70 p-4 transition-colors hover:border-accent/40"
+              >
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="font-display text-xl font-semibold text-fg">{s.value}</dd>
+                <dd className="mt-0.5 text-xs text-faint">{s.label}</dd>
+              </motion.div>
             ))}
-          </ul>
-          <div className="mt-auto pt-8">
+          </dl>
+
+          {/* What's inside */}
+          <h4 className="mt-7 font-mono text-[11px] uppercase tracking-[0.2em] text-faint">What&apos;s inside</h4>
+          <motion.ul
+            className="mt-3 divide-y divide-line rounded-xl border border-line"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
+          >
+            {inside.map(({ icon: Icon, title, text }) => (
+              <motion.li
+                key={title}
+                variants={{ hidden: { opacity: 0, x: -10 }, show: { opacity: 1, x: 0 } }}
+                className="flex items-center gap-3 px-4 py-3"
+              >
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent-light">
+                  <Icon className="h-4 w-4" aria-hidden="true" />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-fg">{title}</p>
+                  <p className="truncate text-xs text-faint">{text}</p>
+                </div>
+              </motion.li>
+            ))}
+          </motion.ul>
+
+          <div className="mt-auto pt-7">
             {status === 'ready' && <ResumeButtons />}
             {status === 'loading' && (
               <p className="flex items-center gap-2 text-sm text-muted">
@@ -94,7 +138,7 @@ export default function Resume() {
                   src={`${resume.file}#view=FitH&toolbar=1&navpanes=0`}
                   title="Abhay Pratap resume (PDF)"
                   loading="lazy"
-                  className="hidden h-[820px] w-full rounded-b-xl bg-white lg:block"
+                  className="hidden h-[700px] w-full rounded-b-xl bg-white lg:block"
                 />
               )}
               <div className={`grid place-items-center gap-4 px-6 py-14 text-center ${canEmbed ? 'lg:hidden' : ''}`}>
@@ -104,7 +148,7 @@ export default function Resume() {
               </div>
             </>
           ) : (
-            <div className="grid min-h-[320px] place-items-center px-6 py-14 text-center lg:min-h-[820px]">
+            <div className="grid min-h-[320px] place-items-center px-6 py-14 text-center lg:min-h-[700px]">
               <div className="space-y-4">
                 <FileText className="mx-auto h-12 w-12 text-faint" aria-hidden="true" />
                 <p className="text-sm text-faint">{status === 'loading' ? 'Loading preview…' : 'Preview will appear here once the resume is uploaded.'}</p>

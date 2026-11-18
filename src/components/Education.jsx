@@ -14,12 +14,7 @@ export default function Education() {
   return (
     <Section id="education" eyebrow="Education" title="Academic background">
       <Reveal className="card relative overflow-hidden p-6 sm:p-10">
-        <motion.div
-          aria-hidden="true"
-          className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-accent/15 blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        />
+        <div aria-hidden="true" className="absolute -right-24 -top-24 h-64 w-64 animate-glow-pulse rounded-full bg-accent/15 blur-3xl" />
         <div className="relative flex items-start gap-4">
           <motion.span
             initial={{ rotate: -20, scale: 0.6, opacity: 0 }}

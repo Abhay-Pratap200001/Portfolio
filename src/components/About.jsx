@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Boxes, Code2, MapPin, Rocket, Sparkles, Workflow } from 'lucide-react'
 import { about, profile } from '../data/portfolio'
+import workPhoto from '../assets/abhay-laptop.webp'
 import { Reveal, Section } from './ui/Section'
 import { fadeUp, stagger } from './ui/motion'
 
@@ -9,7 +10,35 @@ const strengthIcons = [Code2, Boxes, Workflow, Rocket]
 export default function About() {
   return (
     <Section id="about" eyebrow="About me" title="Building for the web, end to end.">
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      {/* Photo column is capped at ~340px so the image is shown near its native
+          size (it's 385px wide) and stays sharp instead of being stretched. */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-[300px_1fr] lg:grid-cols-[340px_1fr]">
+        {/* Photo — shown immediately (no scroll pop-in) */}
+        <div className="mx-auto w-full max-w-[290px] md:sticky md:top-24 md:row-span-2 md:max-w-none md:self-start">
+          <figure className="card group relative overflow-hidden p-2">
+            {/* Uses the photo's own proportions (357 × 622) so the whole picture,
+                laptop included, is shown with nothing cropped. */}
+            <div className="relative aspect-[357/622] overflow-hidden rounded-[1rem]">
+              <img
+                src={workPhoto}
+                alt="Abhay Pratap working on his laptop"
+                width="357"
+                height="622"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              {/* Corner frame accents */}
+              <span aria-hidden="true" className="absolute left-3 top-3 h-6 w-6 rounded-tl-lg border-l-2 border-t-2 border-accent-soft/70 transition-all duration-500 group-hover:h-10 group-hover:w-10" />
+              <span aria-hidden="true" className="absolute bottom-3 right-3 h-6 w-6 rounded-br-lg border-b-2 border-r-2 border-accent-soft/70 transition-all duration-500 group-hover:h-10 group-hover:w-10" />
+            </div>
+            {/* Caption sits under the photo so it doesn't cover the laptop */}
+            <figcaption className="px-3 pb-2 pt-4">
+              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent-light">Currently</p>
+              <p className="mt-1 font-display text-lg font-semibold leading-snug">Building with React, Next.js &amp; Node.js</p>
+            </figcaption>
+          </figure>
+        </div>
+
         <Reveal className="card p-6 sm:p-8">
           <div className="space-y-4 text-[15px] leading-relaxed text-muted sm:text-base">
             {about.paragraphs.map((p) => (

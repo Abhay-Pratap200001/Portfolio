@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { fadeUp, stagger } from './motion'
+import SectionDecor from './SectionDecor'
 
 /** Wraps children in a scroll-triggered reveal. */
 export function Reveal({ children, className = '', delay = 0, as = 'div', ...rest }) {
@@ -28,10 +29,11 @@ const word = {
 
 export function Section({ id, eyebrow, title, intro, children, className = '' }) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={`relative py-20 sm:py-28 ${className}`}>
+    <section id={id} aria-labelledby={`${id}-title`} className={`relative py-12 sm:py-16 ${className}`}>
+      <SectionDecor id={id} />
       <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 xl:px-12">
         <motion.header
-          className="mb-12 max-w-2xl sm:mb-16 xl:max-w-3xl"
+          className="mb-8 max-w-2xl sm:mb-10 xl:max-w-3xl"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-80px' }}

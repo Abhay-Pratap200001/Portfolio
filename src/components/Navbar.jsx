@@ -50,7 +50,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? 'border-b border-line/80 bg-ink/80 backdrop-blur-xl' : 'border-b border-transparent'
+        scrolled || open ? 'border-b border-line/80 bg-ink/95' : 'border-b border-transparent'
       }`}
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-accent focus:px-3 focus:py-2">

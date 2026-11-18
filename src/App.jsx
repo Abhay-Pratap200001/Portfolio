@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, MotionConfig, motion, useScroll, useSpring } from 'framer-motion'
 import { ArrowUp } from 'lucide-react'
+import BackgroundDecor from './components/BackgroundDecor'
+import FloatingTech from './components/FloatingTech'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import TechMarquee from './components/TechMarquee'
@@ -13,6 +15,8 @@ import Education from './components/Education'
 import Resume from './components/Resume'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ThankYou from './components/ThankYou'
+import BeamTrack from './components/ui/EnergyBeam'
 
 function ScrollProgress() {
   const { scrollYProgress } = useScroll()
@@ -43,7 +47,7 @@ function BackToTop() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.6, y: 20 }}
           whileHover={{ y: -4 }}
-          className="fixed bottom-5 right-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-accent/40 bg-surface/90 text-accent-light shadow-lg shadow-black/40 backdrop-blur"
+          className="fixed bottom-5 right-5 z-50 grid h-11 w-11 place-items-center rounded-full border border-accent/40 bg-surface/90 text-accent-light shadow-lg shadow-black/40"
         >
           <ArrowUp className="h-5 w-5" aria-hidden="true" />
         </motion.a>
@@ -72,11 +76,14 @@ export default function App() {
   useCardSpotlight()
   return (
     <MotionConfig reducedMotion="user">
+      <BackgroundDecor />
+      <FloatingTech />
       <ScrollProgress />
       <Navbar />
       <main id="main">
         <Hero />
         <TechMarquee />
+        <BeamTrack>
         <About />
         <Experience />
         <Projects />
@@ -85,7 +92,9 @@ export default function App() {
         <Education />
         <Resume />
         <Contact />
+        </BeamTrack>
       </main>
+      <ThankYou />
       <Footer />
       <BackToTop />
     </MotionConfig>

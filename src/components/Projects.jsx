@@ -5,9 +5,23 @@ import { GitHubIcon } from './ui/BrandIcons'
 import { Section } from './ui/Section'
 import { fadeUp, stagger } from './ui/motion'
 
-/* Stylised UI previews drawn in CSS — lightweight and always available, unlike
-   screenshots of the free-tier live demos which sleep when idle. */
-function BrowserFrame({ url, children }) {
+/* Each project shows a real screenshot (project.image) inside a browser frame.
+   The CSS-drawn previews below are kept as a fallback for projects without one. */
+function Screenshot({ src, alt }) {
+  return (
+    <div className="group/shot relative aspect-[4/3] overflow-hidden bg-ink">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-cover object-top transition-transform duration-[2500ms] ease-out group-hover/shot:scale-[1.04]"
+      />
+    </div>
+  )
+}
+
+function BrowserFrame({ url, children, bare = false }) {
   return (
     <div className="overflow-hidden rounded-xl border border-line-strong bg-ink shadow-2xl shadow-black/60">
       <div className="flex items-center gap-2 border-b border-line bg-surface-2 px-3 py-2">
@@ -16,7 +30,7 @@ function BrowserFrame({ url, children }) {
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]/80" />
         <span className="ml-2 truncate rounded-md bg-ink px-2 py-0.5 font-mono text-[10px] text-faint">{url}</span>
       </div>
-      <div className="aspect-[16/10] p-3">{children}</div>
+      {bare ? children : <div className="aspect-[16/10] p-3">{children}</div>}
     </div>
   )
 }
@@ -163,8 +177,8 @@ export default function Projects() {
                 <div aria-hidden="true" className="bg-grid absolute inset-0 opacity-60" />
                 <div className="relative">
                   <TiltPreview>
-                    <BrowserFrame url={host}>
-                      <Preview />
+                    <BrowserFrame url={host} bare={Boolean(p.image)}>
+                      {p.image ? <Screenshot src={p.image} alt={`Screenshot of the ${p.name} app`} /> : <Preview />}
                     </BrowserFrame>
                   </TiltPreview>
                 </div>

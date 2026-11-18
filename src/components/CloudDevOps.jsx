@@ -66,10 +66,9 @@ function FlowDiagram({ type }) {
               </motion.div>
               {i < nodes.length - 1 && (
                 <motion.div variants={link} className="relative mb-5 h-px flex-1 origin-left overflow-hidden bg-line-strong" aria-hidden="true">
-                  <motion.span
-                    className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-transparent via-accent-soft to-transparent"
-                    animate={{ x: ['-100%', '200%'] }}
-                    transition={{ duration: 2.2, repeat: Infinity, ease: 'linear', delay: i * 0.35 }}
+                  <span
+                    className="absolute inset-y-0 w-1/2 animate-streak bg-gradient-to-r from-transparent via-accent-soft to-transparent"
+                    style={{ animationDelay: `${i * 0.35}s` }}
                   />
                 </motion.div>
               )}
